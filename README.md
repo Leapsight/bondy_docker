@@ -1,3 +1,3 @@
-# README
+# bondy-docker
 
-Work in Progress
+Bondy Docker image
