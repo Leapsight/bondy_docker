@@ -1,4 +1,4 @@
-# README
+# bondy-docker
 
 ## Running
 
