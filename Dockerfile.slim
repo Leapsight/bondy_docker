@@ -77,7 +77,7 @@ EXPOSE 18080 18081 18082 18083 18084 18085 18086
 
 VOLUME ["/bondy/data"]
 
-HEALTHCHECK CMD bondy ping | grep -q pong
+# HEALTHCHECK CMD bondy ping | grep -q pong
 
 USER $USERNAME
 
