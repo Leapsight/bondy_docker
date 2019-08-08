@@ -14,6 +14,8 @@ stages:
     - echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}"
   script:
     - docker build --pull -t "$image" "${VARIANT:-.}"
+  only:
+    - master
 
 
   # env:
