@@ -2,10 +2,10 @@
 # Build stage 0
 # ===========================================================================
 
-FROM erlang:21-slim AS builder
+FROM erlang:21 AS builder
 
 ENV BONDY_REPO=https://gitlab.com/leapsight/bondy.git
-ENV BONDY_TAG=0.8.6
+ENV BONDY_TAG=0.8.5
 ENV BONDY_REBAR_PROFILE=prod
 
 WORKDIR /bondy-build
