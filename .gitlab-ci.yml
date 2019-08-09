@@ -10,7 +10,7 @@ stages:
   before_script:
     - echo "Building version=$BONDY_IMAGE_VERSION, variant=$BONDY_IMAGE_VARIANT"
     # - cd "$BONDY_IMAGE_VERSION"
-    - image="registry.gitlab.com/leapsight/bondy:${BONDY_IMAGE_VERSION}${BONDY_IMAGE_VARIANT:+-$BONDY_IMAGE_VARIANT}"
+    - image="registry.gitlab.com/leapsight/bondy_docker:${BONDY_IMAGE_VERSION}${BONDY_IMAGE_VARIANT:+-$BONDY_IMAGE_VARIANT}"
     # - echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}"
     - rm -rf tmp
     - mkdir tmp
