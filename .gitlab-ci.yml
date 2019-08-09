@@ -1,4 +1,4 @@
-image: docker:latest
+image: docker:master
 
 stages:
   - build
@@ -40,13 +40,13 @@ develop-slim:
     BONDY_IMAGE_VARIANT: "slim"
   <<: *build
 
-latest:
+master:
   stage: build
   variables:
     BONDY_IMAGE_VERSION: "master"
   <<: *build
 
-latest-slim:
+master-slim:
   stage: build
   variables:
     BONDY_IMAGE_VERSION: "master"
