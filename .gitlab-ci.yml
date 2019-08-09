@@ -8,9 +8,11 @@ stages:
   services:
     - docker:dind
   before_script:
+    - echo "Logging in to registry $CI_REGISTRY"
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
     - echo "Building version=$BONDY_IMAGE_VERSION, variant=$BONDY_IMAGE_VARIANT"
     # - cd "$BONDY_IMAGE_VERSION"
-    - image="registry.gitlab.com/leapsight/bondy:${BONDY_IMAGE_VERSION}${BONDY_IMAGE_VARIANT:+-$BONDY_IMAGE_VARIANT}"
+    - image="leapsight/bondy:${BONDY_IMAGE_VERSION}${BONDY_IMAGE_VARIANT:+-$BONDY_IMAGE_VARIANT}"
     # - echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}"
     - rm -rf tmp
     - mkdir tmp
@@ -20,8 +22,6 @@ stages:
     # Build using $VARIANT/Dockerfile orelse ./Dockerfile
     # - docker build --pull -t "$image" "${VARIANT:-.}"
     - docker build --pull -t "$image" tmp
-    # Push to GITLAB REGISTRY
-    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
     - docker push "$image"
 
   only:
