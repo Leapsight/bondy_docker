@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .PHONY: develop-slim develop
 
 develop:
@@ -16,3 +17,13 @@ example-custom-config:
 	docker build \
 	-t bondy:example-custom-config \
 	-f ./examples/custom_config/Dockerfile ./examples/custom_config/
+=======
+REBAR = prod
+
+.PHONY: develop-slim
+
+
+develop-slim:
+	docker build --build-arg BONDY_TAG=develop -t bondy:test -f Dockerfile.slim .
+
+>>>>>>> added 0.8.6

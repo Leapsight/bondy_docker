@@ -32,7 +32,11 @@ RUN rebar3 as $BONDY_REBAR_PROFILE release
 # Build stage 1
 # ===========================================================================
 
+<<<<<<< HEAD
 FROM debian:stretch
+=======
+FROM debian:stretch-slim
+>>>>>>> added 0.8.6
 
 ENV BONDY_HOME="/bondy"
 ENV RELEASE_DIR="/bondy-build/bondy/_build/prod/rel/bondy"
