@@ -42,7 +42,7 @@ docker run \
     -p 18082:18082 \
     -p 18086:18086 \
     --name bondy1 \
-    -d leapsight/bondy
+    -d leapsight/bondy:0.8.6
 ```
 
 ## How to build an image locally?
