@@ -1,5 +1,4 @@
 FROM leapsight/bondy:develop AS builder
 
-COPY --chown=bondy:bondy etc/bondy.conf /bondy/etc/bondy.conf.template
-
-# RUN /bondy/etc/replace-env-vars -i /bondy/etc/bondy.conf -o /bondy/etc/bondy.conf
+COPY --chown=bondy:bondy etc/security_config.json.template /bondy/etc/security_config.json.template
+COPY --chown=bondy:bondy etc/bondy.conf.template /bondy/etc/bondy.conf.template
