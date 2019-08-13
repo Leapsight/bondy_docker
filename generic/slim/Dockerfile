@@ -6,7 +6,7 @@ FROM erlang:21-slim AS builder
 
 ARG BONDY_REPO=https://gitlab.com/leapsight/bondy.git
 ARG BONDY_TAG=0.8.5
-ARG BONDY_PROFILE=prod
+ARG BONDY_REBAR_PROFILE=prod
 
 WORKDIR /bondy-build
 
@@ -26,7 +26,7 @@ ENV PATH "$PATH:/root/.cache/rebar3/bin"
 RUN mkdir -p /bondy-build/bondy && \
     git clone --branch $BONDY_TAG  --single-branch --depth 1 $BONDY_REPO
 WORKDIR /bondy-build/bondy
-RUN rebar3 as $BONDY_PROFILE release
+RUN rebar3 as $BONDY_REBAR_PROFILE release
 
 # ===========================================================================
 # Build stage 1

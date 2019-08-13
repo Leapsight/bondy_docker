@@ -32,7 +32,7 @@ RUN rebar3 as $BONDY_REBAR_PROFILE release
 # Build stage 1
 # ===========================================================================
 
-FROM debian:stretch-slim
+FROM debian:stretch
 
 ENV BONDY_HOME="/bondy"
 ENV RELEASE_DIR="/bondy-build/bondy/_build/prod/rel/bondy"
