@@ -10,7 +10,7 @@ if test -f "$USER_CONF"; then
     cp /tmp/bondy.conf /bondy/etc/bondy.conf
 fi
 export RUNNER_ETC_DIR=/bondy/etc
-export RUNNER_GEN_DIR=$RUNNER_ETC_DIR
+export RUNNER_GEN_DIR=/bondy/tmp
 export RUNNER_LOG_DIR=/bondy/log
-exec bondy foreground
+exec env RUNNER_GEN_DIR=/bondy/tmp bondy foreground
 

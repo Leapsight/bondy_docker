@@ -53,3 +53,22 @@ make develop-slim
 ```
 
 
+
+
+## Examples
+
+## Custom Config
+
+```
+make example-custom-config
+```
+
+```bash
+docker run \
+    -p 18080:18080 \
+    -p 18081:18081 \
+    -p 18082:18082 \
+    -p 18086:18086 \
+    --name bondy-example-custom-config \
+    -d example-custom-config
+```
