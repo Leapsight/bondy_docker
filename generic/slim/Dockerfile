@@ -1,13 +1,12 @@
 # ===========================================================================
 # Build stage 0
-# We build Bondy from source using Erlang's official Docker Image
 # ===========================================================================
 
-FROM erlang:21 AS builder
+FROM erlang:21-slim AS builder
 
-ENV BONDY_REPO=https://gitlab.com/leapsight/bondy.git
-ARG BONDY_TAG=master
-ARG BONDY_REBAR_PROFILE=prod
+ARG BONDY_REPO=https://gitlab.com/leapsight/bondy.git
+ARG BONDY_TAG=0.8.5
+ARG BONDY_PROFILE=prod
 
 WORKDIR /bondy-build
 
@@ -15,7 +14,7 @@ WORKDIR /bondy-build
 RUN apt-get update && \
     apt-get -y install build-essential git libssl-dev curl
 
-# Download and install rebar3
+# Download and install build deps and rebar
 RUN set -xe \
     && curl -fSL -o rebar3 "https://s3.amazonaws.com/rebar3-nightly/rebar3" \
     && chmod +x ./rebar3 \
@@ -23,13 +22,11 @@ RUN set -xe \
     && rm ./rebar3
 ENV PATH "$PATH:/root/.cache/rebar3/bin"
 
-# Download Bondy source
+# Download Bondy source and build release
 RUN mkdir -p /bondy-build/bondy && \
     git clone --branch $BONDY_TAG  --single-branch --depth 1 $BONDY_REPO
-
-# Build bondy release
 WORKDIR /bondy-build/bondy
-RUN rebar3 as $BONDY_REBAR_PROFILE release
+RUN rebar3 as $BONDY_PROFILE release
 
 # ===========================================================================
 # Build stage 1
@@ -53,6 +50,7 @@ RUN apt-get update \
     && useradd -u 1000 -r -g bondy -d $BONDY_HOME -s /bin/bash -c "Bondy user" bondy
 
 WORKDIR $BONDY_HOME
+
 
 # Install the application and the start.sh script
 # COPY --chown=1000:1000 files/vm.args /bondy/etc/vm.args
