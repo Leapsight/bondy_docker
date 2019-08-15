@@ -2,7 +2,7 @@
 # Build stage 0
 # ===========================================================================
 
-FROM erlang:21-slim AS builder
+FROM erlang:21 AS builder
 
 ARG BONDY_REPO=https://gitlab.com/leapsight/bondy.git
 ARG BONDY_TAG=0.8.5

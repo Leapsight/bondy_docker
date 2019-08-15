@@ -4,7 +4,7 @@ develop:
 	docker build \
 	--build-arg BONDY_TAG=develop \
 	-t bondy:test \
-	-f ./generic/Dockerfile .
+	--pull --rm --force-rm -f ./generic/Dockerfile .
 
 develop-slim:
 	docker build \
