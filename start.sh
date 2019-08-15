@@ -18,8 +18,7 @@ for absolute in /bondy/etc/*.template; do
 done
 
 export RUNNER_ETC_DIR=/bondy/etc
-export RUNNER_GEN_DIR=/bondy/tmp
+export RUNNER_GEN_DIR=/bondy/etc
 export RUNNER_LOG_DIR=/bondy/log
-
 exec bondy foreground
 
