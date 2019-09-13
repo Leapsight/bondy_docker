@@ -59,6 +59,20 @@ docker run \
 
 To learn more about the different variants go to https://hub.docker.com/r/leapsight/bondy/.
 
+## Customising Bondy configuration files
+
+```bash
+docker run \
+    -p 18080:18080 \
+    -p 18081:18081 \
+    -p 18082:18082 \
+    -p 18086:18086 \
+    --name bondy1 \
+    -v ~/tmp/bondy/etc:/bondy/etc \
+    -d leapsight/bondy:develop
+```
+
+
 ## Additional tools for contributors
 
 If you need to build an image locally you can use the following make targets with the provided Makefile.
