@@ -1,4 +1,4 @@
-image: docker:master
+image: docker:latest
 
 stages:
   - build
@@ -8,61 +8,75 @@ stages:
   services:
     - docker:dind
   before_script:
-    - cd "$DIR"
-    - eval $(awk '/VERSION=/ { sub(/@/, "-", $2); print $2; exit }' ${VARIANT:-.}/Dockerfile)
-    - image="bondy:${VERSION}${VARIANT:+-$VARIANT}"
-    - echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}"
+    - echo "Logging in to registry $CI_REGISTRY"
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - echo "Building version=$BONDY_IMAGE_VERSION, variant=$BONDY_IMAGE_VARIANT"
+    # - cd "$BONDY_IMAGE_VERSION"
+    - image="leapsight/bondy:${BONDY_IMAGE_VERSION}${BONDY_IMAGE_VARIANT:+-$BONDY_IMAGE_VARIANT}"
+    # - echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}"
+    - rm -rf tmp
+    - mkdir tmp
+    - cp "${BONDY_IMAGE_VERSION}/${VARIANT:-.}/Dockerfile" tmp/Dockerfile
+    - cp start.sh tmp/start.sh
   script:
-    - docker build --pull -t "$image" "${VARIANT:-.}"
+    # Build using $VARIANT/Dockerfile orelse ./Dockerfile
+    # - docker build --pull -t "$image" "${VARIANT:-.}"
+    - docker build --pull -t "$image" tmp
+    - docker push "$image"
+
   only:
     - master
-
-
-  # env:
-  # - DIR=master
-  # - DIR=master VARIANT=slim
-  # - DIR=develop
-  # - DIR=develop VARIANT=slim
-  # - DIR=0.8.6
-  # - DIR=0.8.6 VARIANT=slim
 
 develop:
   stage: build
   variables:
-    DIR: "develop"
+    BONDY_IMAGE_VERSION: "develop"
   <<: *build
 
 develop-slim:
   stage: build
   variables:
-    DIR: "develop"
-    VARIANT: "slim"
+    BONDY_IMAGE_VERSION: "develop"
+    BONDY_IMAGE_VARIANT: "slim"
   <<: *build
 
 master:
   stage: build
   variables:
-    DIR: "master"
+    BONDY_IMAGE_VERSION: "master"
   <<: *build
 
 master-slim:
   stage: build
   variables:
-    DIR: "master"
-    VARIANT: "slim"
+    BONDY_IMAGE_VERSION: "master"
+    BONDY_IMAGE_VARIANT: "slim"
   <<: *build
 
-"0.8.5":
+0.8.5:
   stage: build
   variables:
-    DIR: "master"
+    BONDY_IMAGE_VERSION: "0.8.5"
   <<: *build
 
-"0.8.5-slim":
+0.8.5-slim:
   stage: build
   variables:
-    DIR: "master"
-    VARIANT: "slim"
+    BONDY_IMAGE_VERSION: "0.8.5"
+    BONDY_IMAGE_VARIANT: "slim"
+  <<: *build
+
+0.8.6:
+  stage: build
+  variables:
+    BONDY_IMAGE_VERSION: "0.8.6"
+  <<: *build
+
+0.8.6-slim:
+  stage: build
+  variables:
+    BONDY_IMAGE_VERSION: "0.8.6"
+    BONDY_IMAGE_VARIANT: "slim"
   <<: *build
 
 0.8.7:
