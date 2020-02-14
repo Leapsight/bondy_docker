@@ -93,7 +93,7 @@ There is even a target for that.
 make example-custom-config
 ```
 
-Once you build your iamge you would run it like this:
+Once you build your image you would run it like this:
 
 ```bash
 docker run \
