@@ -103,4 +103,6 @@ master-slim:
   variables:
     BONDY_IMAGE_VERSION: "0.8.8"
     BONDY_IMAGE_VARIANT: "slim"
+    BONDY_TAG: "0.8.8.2"
+  <<: *build
   <<: *build
