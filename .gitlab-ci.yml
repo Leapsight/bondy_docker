@@ -33,12 +33,14 @@ develop:
   stage: build
   variables:
     BONDY_IMAGE_VERSION: "develop"
+    BONDY_TAG: "develop"
   <<: *build
 
 develop-slim:
   stage: build
   variables:
     BONDY_IMAGE_VERSION: "develop"
+    BONDY_TAG: "develop"
     BONDY_IMAGE_VARIANT: "slim"
   <<: *build
 
@@ -46,12 +48,14 @@ master:
   stage: build
   variables:
     BONDY_IMAGE_VERSION: "master"
+    BONDY_TAG: "master"
   <<: *build
 
 master-slim:
   stage: build
   variables:
     BONDY_IMAGE_VERSION: "master"
+    BONDY_TAG: "master"
     BONDY_IMAGE_VARIANT: "slim"
   <<: *build
 
