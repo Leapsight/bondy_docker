@@ -8,10 +8,10 @@ stages:
   services:
     - docker:dind
   before_script:
+    - BONDY_TAG="${BONDY_TAG:-BONDY_IMAGE_VERSION}"
     - echo "Logging in to registry $CI_REGISTRY"
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-    - echo "Building version=$BONDY_IMAGE_VERSION, variant=$BONDY_IMAGE_VARIANT"
-    # - cd "$BONDY_IMAGE_VERSION"
+    - echo "Building tag=$BONDY_TAG version=$BONDY_IMAGE_VERSION, variant=$BONDY_IMAGE_VARIANT"
     - image="leapsight/bondy:${BONDY_IMAGE_VERSION}${BONDY_IMAGE_VARIANT:+-$BONDY_IMAGE_VARIANT}"
     # - echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}"
     - rm -rf tmp
@@ -21,7 +21,7 @@ stages:
   script:
     # Build using $VARIANT/Dockerfile orelse ./Dockerfile
     # - docker build --pull -t "$image" "${VARIANT:-.}"
-    - docker build --pull -t "$image" tmp
+    - docker build --build-arg var_name=${BONDY_TAG} --pull -t "$image" tmp
     - docker push "$image"
 
   only:
@@ -96,13 +96,28 @@ master-slim:
   stage: build
   variables:
     BONDY_IMAGE_VERSION: "0.8.8"
+    BONDY_TAG: "0.8.8.2"
   <<: *build
 
 0.8.8-slim:
   stage: build
   variables:
     BONDY_IMAGE_VERSION: "0.8.8"
+    BONDY_TAG: "0.8.8.2"
     BONDY_IMAGE_VARIANT: "slim"
+  <<: *build
+
+0.8.8.2:
+  stage: build
+  variables:
+    BONDY_IMAGE_VERSION: "0.8.8.2"
     BONDY_TAG: "0.8.8.2"
   <<: *build
+
+0.8.8.2-slim:
+  stage: build
+  variables:
+    BONDY_IMAGE_VERSION: "0.8.8.2"
+    BONDY_TAG: "0.8.8.2"
+    BONDY_IMAGE_VARIANT: "slim"
   <<: *build

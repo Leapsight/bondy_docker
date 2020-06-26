@@ -4,8 +4,9 @@
 
 FROM erlang:21-slim AS builder
 
+ARG BONDY_TAG
+
 ENV BONDY_REPO=https://gitlab.com/leapsight/bondy.git
-ENV BONDY_TAG=0.8.8.2
 ENV BONDY_REBAR_PROFILE=prod
 
 WORKDIR /bondy-build
