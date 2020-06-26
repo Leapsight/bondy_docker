@@ -21,7 +21,7 @@ stages:
   script:
     # Build using $VARIANT/Dockerfile orelse ./Dockerfile
     # - docker build --pull -t "$image" "${VARIANT:-.}"
-    - docker build --build-arg var_name=${BONDY_TAG} --pull -t "$image" tmp
+    - docker build --build-arg BONDY_TAG=${BONDY_TAG} --pull -t "$image" tmp
     - docker push "$image"
 
   only:
