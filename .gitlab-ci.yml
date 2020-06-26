@@ -56,53 +56,59 @@ master-slim:
 0.8.5:
   stage: build
   variables:
-    BONDY_IMAGE_VERSION: "0.8.5"
+    BONDY_IMAGE_VERSION: "0.8"
+    BONDY_TAG: "0.8.5"
   <<: *build
 
 0.8.5-slim:
   stage: build
   variables:
-    BONDY_IMAGE_VERSION: "0.8.5"
+    BONDY_IMAGE_VERSION: "0.8"
+    BONDY_TAG: "0.8.5"
     BONDY_IMAGE_VARIANT: "slim"
   <<: *build
 
 0.8.6:
   stage: build
   variables:
-    BONDY_IMAGE_VERSION: "0.8.6"
+    BONDY_IMAGE_VERSION: "0.8"
+    BONDY_TAG: "0.8.6"
   <<: *build
 
 0.8.6-slim:
   stage: build
   variables:
-    BONDY_IMAGE_VERSION: "0.8.6"
+    BONDY_IMAGE_VERSION: "0.8"
+    BONDY_TAG: "0.8.6"
     BONDY_IMAGE_VARIANT: "slim"
   <<: *build
 
 0.8.7:
   stage: build
   variables:
-    BONDY_IMAGE_VERSION: "0.8.7"
+    BONDY_IMAGE_VERSION: "0.8"
+    BONDY_TAG: "0.8.7"
   <<: *build
 
 0.8.7-slim:
   stage: build
   variables:
-    BONDY_IMAGE_VERSION: "0.8.7"
+    BONDY_IMAGE_VERSION: "0.8"
+    BONDY_TAG: "0.8.7"
     BONDY_IMAGE_VARIANT: "slim"
   <<: *build
 
 0.8.8:
   stage: build
   variables:
-    BONDY_IMAGE_VERSION: "0.8.8"
+    BONDY_IMAGE_VERSION: "0.8"
     BONDY_TAG: "0.8.8.2"
   <<: *build
 
 0.8.8-slim:
   stage: build
   variables:
-    BONDY_IMAGE_VERSION: "0.8.8"
+    BONDY_IMAGE_VERSION: "0.8"
     BONDY_TAG: "0.8.8.2"
     BONDY_IMAGE_VARIANT: "slim"
   <<: *build
@@ -110,14 +116,14 @@ master-slim:
 0.8.8.2:
   stage: build
   variables:
-    BONDY_IMAGE_VERSION: "0.8.8.2"
+    BONDY_IMAGE_VERSION: "0.8"
     BONDY_TAG: "0.8.8.2"
   <<: *build
 
 0.8.8.2-slim:
   stage: build
   variables:
-    BONDY_IMAGE_VERSION: "0.8.8.2"
+    BONDY_IMAGE_VERSION: "0.8"
     BONDY_TAG: "0.8.8.2"
     BONDY_IMAGE_VARIANT: "slim"
   <<: *build
