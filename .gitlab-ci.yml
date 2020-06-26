@@ -8,11 +8,13 @@ stages:
   services:
     - docker:dind
   before_script:
+    - echo "CI_JOB_NAME = $CI_JOB_NAME"
     - BONDY_TAG="${BONDY_TAG:-BONDY_IMAGE_VERSION}"
     - echo "Logging in to registry $CI_REGISTRY"
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-    - echo "Building tag=$BONDY_TAG version=$BONDY_IMAGE_VERSION, variant=$BONDY_IMAGE_VARIANT"
-    - image="leapsight/bondy:${BONDY_IMAGE_VERSION}${BONDY_IMAGE_VARIANT:+-$BONDY_IMAGE_VARIANT}"
+    - echo "Building tag=$BONDY_TAG name=$CI_JOB_NAME version=$BONDY_IMAGE_VERSION, variant=$BONDY_IMAGE_VARIANT"
+    # - image="leapsight/bondy:${BONDY_IMAGE_VERSION}${BONDY_IMAGE_VARIANT:+-$BONDY_IMAGE_VARIANT}"
+    - image="leapsight/bondy:${CI_JOB_NAME}"
     # - echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}"
     - rm -rf tmp
     - mkdir tmp
