@@ -77,11 +77,11 @@ docker run \
 
 If you need to build an image locally you can use the following make targets with the provided Makefile.
 
-```shell
+```bash
 make develop
 ```
 
-```shell
+```bash
 make develop-slim
 ```
 
