@@ -36,6 +36,7 @@ RUN rebar3 as $BONDY_REBAR_PROFILE release
 FROM buildpack-deps:buster
 
 ENV BONDY_HOME="/bondy"
+ENV BONDY_DATA_DIR="/bondy/data"
 ENV RELEASE_DIR="/bondy-build/bondy/_build/prod/rel/bondy"
 
 ENV BONDY_LOG_CONSOLE=console
@@ -70,6 +71,8 @@ ENV PATH="$BONDY_HOME/bin:$PATH"
 EXPOSE 18080 18081 18082 18083 18084 18085 18086
 
 USER bondy
-VOLUME ["/bondy/data", "/bondy/etc", "/bondy/tmp", "/bondy/log"]
+# set home so that any `--user` knows where to put the erlang cookie
+ENV HOME $BONDY_HOME
+VOLUME [$BONDY_DATA_DIR, "/bondy/etc", "/bondy/tmp", "/bondy/log"]
 WORKDIR $BONDY_HOME
 CMD ["start_bondy"]
