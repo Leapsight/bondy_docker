@@ -13,7 +13,7 @@ WORKDIR /bondy-build
 
 # Install build deps
 RUN apt-get update && \
-    apt-get -y install build-essential git libssl-dev curl
+    apt-get -y install build-essential git libssl-dev libsodium-dev curl
 
 # Download and install build deps and rebar
 RUN set -xe \
