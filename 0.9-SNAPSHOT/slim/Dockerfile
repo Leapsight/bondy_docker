@@ -69,6 +69,8 @@ ENV PATH="$BONDY_HOME/bin:$PATH"
 EXPOSE 18080 18081 18082 18083 18084 18085 18086
 
 USER bondy
+# set home so that any `--user` knows where to put the erlang cookie
+ENV HOME "/bondy/data"
 VOLUME ["/bondy/data", "/bondy/etc", "/bondy/tmp", "/bondy/log"]
 WORKDIR $BONDY_HOME
 CMD ["start_bondy"]

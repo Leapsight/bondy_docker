@@ -37,8 +37,6 @@ FROM debian:buster
 
 ENV RELEASE_DIR="/bondy-build/bondy/_build/prod/rel/bondy"
 ENV BONDY_HOME="/bondy"
-ENV BONDY_DATA_DIR="/bondy/data"
-
 
 ENV BONDY_LOG_CONSOLE=console
 ENV BONDY_LOG_LEVEL=info
@@ -51,13 +49,6 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/* \
     && groupadd -g 1000 -r bondy \
     && useradd -u 1000 -r -g bondy -d $BONDY_HOME -s /bin/bash -c "Bondy user" bondy
-    # \
-    # && mkdir -p $BONDY_DATA_DIR \
-    # && chown -R bondy:bondy $BONDY_DATA_DIR \
-
-    # && chown -R 700 $BONDY_DATA_DIR \
-    # && touch $BONDY_DATA_DIR/.erlang.cookie \
-    # && chown -R 600 $BONDY_DATA_DIR/.erlang.cookie
 
 WORKDIR $BONDY_HOME
 
@@ -80,7 +71,7 @@ EXPOSE 18080 18081 18082 18083 18084 18085 18086
 
 USER bondy
 # set home so that any `--user` knows where to put the erlang cookie
-ENV HOME $BONDY_DATA_DIR
-VOLUME [$BONDY_DATA_DIR, "/bondy/etc", "/bondy/tmp", "/bondy/log"]
+ENV HOME "/bondy/data"
+VOLUME ["/bondy/data", "/bondy/etc", "/bondy/tmp", "/bondy/log"]
 WORKDIR $BONDY_HOME
 CMD ["start_bondy"]
