@@ -73,4 +73,4 @@ USER bondy
 ENV HOME "/bondy/data"
 VOLUME ["/bondy/data", "/bondy/etc", "/bondy/tmp", "/bondy/log"]
 WORKDIR $BONDY_HOME
-CMD ["start_bondy"]
+ENTRYPOINT ["bondy", "foreground"]

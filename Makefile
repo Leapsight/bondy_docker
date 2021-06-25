@@ -51,8 +51,8 @@ else
 		-p 18082:18082 \
 		-p 18086:18086 \
 		-v "$(PWD)/examples/custom_config/etc:/bondy/etc" \
-		--name "$(IMAGE_NAME)" \
-		-d "$(BONDY_TAG)"
+		--name "bondy" \
+		-d "$(IMAGE_NAME)"
 endif
 
 scan-tag:
