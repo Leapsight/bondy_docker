@@ -77,6 +77,7 @@ run-latest:
 	docker stop bondy-latest || true
 	docker rm bondy-latest || true
 	docker run \
+		--rm \
 		-e BONDY_ERL_NODENAME=bondy1@127.0.0.1 \
 		-e BONDY_ERL_DISTRIBUTED_COOKIE=bondy \
 		-p 18080:18080 \
