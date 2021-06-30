@@ -53,10 +53,11 @@ RUN apt-get update \
 USER bondy
 WORKDIR $BONDY_HOME
 
+RUN chown bondy:bondy $BONDY_HOME
+
 # Install the application and the start.sh script
 # COPY --chown=1000:1000 files/vm.args /bondy/etc/vm.args
 COPY --chown=bondy:bondy --from=builder $RELEASE_DIR $BONDY_HOME
-COPY --chown=bondy:bondy start.sh $BONDY_HOME/bin/start_bondy
 ENV PATH="$BONDY_HOME/bin:$PATH"
 
 # Ports
