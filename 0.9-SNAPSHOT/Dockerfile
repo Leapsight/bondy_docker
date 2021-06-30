@@ -50,13 +50,10 @@ RUN apt-get update \
     && groupadd -g 1000 -r bondy \
     && useradd -u 1000 -r -g bondy -d $BONDY_HOME -s /bin/bash -c "Bondy user" bondy
 
-USER bondy
+RUN mkdir $BONDY_HOME && chown bondy:bondy $BONDY_HOME
+USER bondy:bondy
 WORKDIR $BONDY_HOME
 
-RUN chown bondy:bondy $BONDY_HOME
-
-# Install the application and the start.sh script
-# COPY --chown=1000:1000 files/vm.args /bondy/etc/vm.args
 COPY --chown=bondy:bondy --from=builder $RELEASE_DIR $BONDY_HOME
 ENV PATH="$BONDY_HOME/bin:$PATH"
 
