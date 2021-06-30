@@ -12,7 +12,7 @@ WORKDIR /bondy-build
 
 # Install build deps
 RUN apt-get update && \
-    apt-get -y install build-essential git libssl-dev libsodium-dev curl
+    apt-get -y install build-essential git libssl-dev libsodium-dev libsnappy-dev curl
 
 # Download and install build deps and rebar
 RUN set -xe \
@@ -35,8 +35,8 @@ RUN rebar3 as prod release
 
 FROM debian:buster
 
-ENV RELEASE_DIR="/bondy-build/bondy/_build/prod/rel/bondy"
 ENV BONDY_HOME="/bondy"
+ENV RELEASE_DIR="/bondy-build/bondy/_build/prod/rel/bondy"
 
 ENV BONDY_LOG_CONSOLE=console
 ENV BONDY_LOG_LEVEL=info

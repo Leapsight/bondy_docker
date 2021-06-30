@@ -26,6 +26,7 @@ ENV PATH "$PATH:/root/.cache/rebar3/bin"
 RUN mkdir -p /bondy-build/bondy && \
     git clone --branch $BONDY_TAG  --single-branch --depth 1 $BONDY_REPO
 WORKDIR /bondy-build/bondy
+# This builds the release in /bondy-build/bondy/_build/prod/rel/bondy
 RUN rebar3 as prod release
 
 # ===========================================================================
@@ -49,6 +50,7 @@ RUN apt-get update \
     && groupadd -g 1000 -r bondy \
     && useradd -u 1000 -r -g bondy -d $BONDY_HOME -s /bin/bash -c "Bondy user" bondy
 
+USER bondy
 WORKDIR $BONDY_HOME
 
 # Install the application and the start.sh script
@@ -68,9 +70,9 @@ ENV PATH="$BONDY_HOME/bin:$PATH"
 # 18086 CLUSTER PEER SERVICE
 EXPOSE 18080 18081 18082 18083 18084 18085 18086
 
-USER bondy
+
 # set home so that any `--user` knows where to put the erlang cookie
-ENV HOME "/bondy/data"
+ENV HOME "/bondy"
 VOLUME ["/bondy/data", "/bondy/etc", "/bondy/tmp", "/bondy/log"]
 WORKDIR $BONDY_HOME
 ENTRYPOINT ["bondy", "foreground"]
