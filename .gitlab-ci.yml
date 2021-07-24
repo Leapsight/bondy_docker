@@ -180,14 +180,14 @@ master-slim:
   stage: build
   variables:
     BONDY_IMAGE_VERSION: "0.9-SNAPSHOT"
-    BONDY_TAG: "release/0.9.0_SSO"
+    BONDY_TAG: "feature/0.9.0_SSO"
   <<: *build
 
 '0.9-SNAPSHOT-SSO-slim':
   stage: build
   variables:
     BONDY_IMAGE_VERSION: "0.9-SNAPSHOT"
-    BONDY_TAG: "release/0.9.0_SSO"
+    BONDY_TAG: "feature/0.9.0_SSO"
     BONDY_IMAGE_VARIANT: "slim"
   <<: *build
 
