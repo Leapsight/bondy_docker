@@ -81,113 +81,143 @@ master-slim:
 # 0.8
 # ==============================================================================
 
-0.8.7:
-  stage: build
-  variables:
-    BONDY_IMAGE_VERSION: "0.8"
-    BONDY_TAG: "0.8.7"
-  <<: *build
+# 0.8.7:
+#   stage: build
+#   variables:
+#     BONDY_IMAGE_VERSION: "0.8"
+#     BONDY_TAG: "0.8.7"
+#   <<: *build
 
-0.8.7-slim:
-  stage: build
-  variables:
-    BONDY_IMAGE_VERSION: "0.8"
-    BONDY_TAG: "0.8.7"
-    BONDY_IMAGE_VARIANT: "slim"
-  <<: *build
+# 0.8.7-slim:
+#   stage: build
+#   variables:
+#     BONDY_IMAGE_VERSION: "0.8"
+#     BONDY_TAG: "0.8.7"
+#     BONDY_IMAGE_VARIANT: "slim"
+#   <<: *build
 
-0.8.8:
-  stage: build
-  variables:
-    BONDY_IMAGE_VERSION: "0.8"
-    BONDY_TAG: "0.8.8.3"
-  <<: *build
+# 0.8.8:
+#   stage: build
+#   variables:
+#     BONDY_IMAGE_VERSION: "0.8"
+#     BONDY_TAG: "0.8.8.3"
+#   <<: *build
 
-0.8.8-slim:
-  stage: build
-  variables:
-    BONDY_IMAGE_VERSION: "0.8"
-    BONDY_TAG: "0.8.8.3"
-    BONDY_IMAGE_VARIANT: "slim"
-  <<: *build
+# 0.8.8-slim:
+#   stage: build
+#   variables:
+#     BONDY_IMAGE_VERSION: "0.8"
+#     BONDY_TAG: "0.8.8.3"
+#     BONDY_IMAGE_VARIANT: "slim"
+#   <<: *build
 
-0.8.8.3:
-  stage: build
-  variables:
-    BONDY_IMAGE_VERSION: "0.8"
-    BONDY_TAG: "0.8.8.3"
-  <<: *build
+# 0.8.8.3:
+#   stage: build
+#   variables:
+#     BONDY_IMAGE_VERSION: "0.8"
+#     BONDY_TAG: "0.8.8.3"
+#   <<: *build
 
-0.8.8.3-slim:
-  stage: build
-  variables:
-    BONDY_IMAGE_VERSION: "0.8"
-    BONDY_TAG: "0.8.8.3"
-    BONDY_IMAGE_VARIANT: "slim"
-  <<: *build
+# 0.8.8.3-slim:
+#   stage: build
+#   variables:
+#     BONDY_IMAGE_VERSION: "0.8"
+#     BONDY_TAG: "0.8.8.3"
+#     BONDY_IMAGE_VARIANT: "slim"
+#   <<: *build
 
-0.8.8.2:
-  stage: build
-  variables:
-    BONDY_IMAGE_VERSION: "0.8"
-    BONDY_TAG: "0.8.8.2"
-  <<: *build
+# 0.8.8.2:
+#   stage: build
+#   variables:
+#     BONDY_IMAGE_VERSION: "0.8"
+#     BONDY_TAG: "0.8.8.2"
+#   <<: *build
 
-0.8.8.2-slim:
-  stage: build
-  variables:
-    BONDY_IMAGE_VERSION: "0.8"
-    BONDY_TAG: "0.8.8.2"
-    BONDY_IMAGE_VARIANT: "slim"
-  <<: *build
+# 0.8.8.2-slim:
+#   stage: build
+#   variables:
+#     BONDY_IMAGE_VERSION: "0.8"
+#     BONDY_TAG: "0.8.8.2"
+#     BONDY_IMAGE_VARIANT: "slim"
+#   <<: *build
 
-'0.8':
-  stage: build
-  variables:
-    BONDY_IMAGE_VERSION: "0.8"
-    BONDY_TAG: "0.8.8.3"
-  <<: *build
+# '0.8':
+#   stage: build
+#   variables:
+#     BONDY_IMAGE_VERSION: "0.8"
+#     BONDY_TAG: "0.8.8.3"
+#   <<: *build
 
-'0.8-slim':
-  stage: build
-  variables:
-    BONDY_IMAGE_VERSION: "0.8"
-    BONDY_TAG: "0.8.8.3"
-    BONDY_IMAGE_VARIANT: "slim"
-  <<: *build
+# '0.8-slim':
+#   stage: build
+#   variables:
+#     BONDY_IMAGE_VERSION: "0.8"
+#     BONDY_TAG: "0.8.8.3"
+#     BONDY_IMAGE_VARIANT: "slim"
+#   <<: *build
 
 # ==============================================================================
 # 0.9
 # ==============================================================================
 
 
-'0.9-SNAPSHOT':
+# '0.9-SNAPSHOT':
+#   stage: build
+#   variables:
+#     BONDY_IMAGE_VERSION: "0.9-SNAPSHOT"
+#     BONDY_TAG: "0.9.0-SNAPSHOT"
+#   <<: *build
+
+# '0.9-SNAPSHOT-slim':
+#   stage: build
+#   variables:
+#     BONDY_IMAGE_VERSION: "0.9-SNAPSHOT"
+#     BONDY_TAG: "0.9.0-SNAPSHOT"
+#     BONDY_IMAGE_VARIANT: "slim"
+#   <<: *build
+
+# '0.9-SNAPSHOT-SSO':
+#   stage: build
+#   variables:
+#     BONDY_IMAGE_VERSION: "0.9-SNAPSHOT"
+#     BONDY_TAG: "0.9.0-SNAPSHOT-SSO"
+#   <<: *build
+
+# '0.9-SNAPSHOT-SSO-slim':
+#   stage: build
+#   variables:
+#     BONDY_IMAGE_VERSION: "0.9-SNAPSHOT"
+#     BONDY_TAG: "0.9.0-SNAPSHOT-SSO"
+#     BONDY_IMAGE_VARIANT: "slim"
+#   <<: *build
+
+'1.0.0-beta.1':
   stage: build
   variables:
     BONDY_IMAGE_VERSION: "0.9-SNAPSHOT"
-    BONDY_TAG: "0.9.0-SNAPSHOT"
+    BONDY_TAG: "1.0.0-beta.1"
   <<: *build
 
-'0.9-SNAPSHOT-slim':
+'1.0.0-beta.1-slim':
   stage: build
   variables:
     BONDY_IMAGE_VERSION: "0.9-SNAPSHOT"
-    BONDY_TAG: "0.9.0-SNAPSHOT"
+    BONDY_TAG: "1.0.0-beta.1"
     BONDY_IMAGE_VARIANT: "slim"
   <<: *build
 
-'0.9-SNAPSHOT-SSO':
+'1.0.0-beta.3':
   stage: build
   variables:
     BONDY_IMAGE_VERSION: "0.9-SNAPSHOT"
-    BONDY_TAG: "feature/0.9.0_SSO"
+    BONDY_TAG: "1.0.0-beta.3"
   <<: *build
 
-'0.9-SNAPSHOT-SSO-slim':
+'1.0.0-beta.3-slim':
   stage: build
   variables:
     BONDY_IMAGE_VERSION: "0.9-SNAPSHOT"
-    BONDY_TAG: "feature/0.9.0_SSO"
+    BONDY_TAG: "1.0.0-beta.3"
     BONDY_IMAGE_VARIANT: "slim"
   <<: *build
 
