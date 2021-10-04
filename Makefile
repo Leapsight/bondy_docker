@@ -68,7 +68,7 @@ build-latest:
 	docker rm bondy-latest || true
 	docker rmi bondy-latest || true
 	docker build \
-		--build-arg BONDY_TAG=release/0.9.0-SNAPSHOT \
+		--build-arg BONDY_TAG=release/1.0.0-beta.5 \
 		--pull \
 		-t "bondy-latest" \
 		-f 0.9-SNAPSHOT/Dockerfile .
