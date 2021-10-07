@@ -240,14 +240,14 @@ master-slim:
   stage: build
   variables:
     BONDY_IMAGE_VERSION: "0.9-SNAPSHOT"
-    BONDY_TAG: "1.0.0-beta.5"
+    BONDY_TAG: "1.0.0-beta.6"
   <<: *build
 
 '1.0.0-beta.6-slim':
   stage: build
   variables:
     BONDY_IMAGE_VERSION: "0.9-SNAPSHOT"
-    BONDY_TAG: "1.0.0-beta.5"
+    BONDY_TAG: "1.0.0-beta.6"
     BONDY_IMAGE_VARIANT: "slim"
   <<: *build
 
