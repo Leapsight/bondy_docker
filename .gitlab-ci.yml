@@ -129,14 +129,14 @@ master-slim:
 0.8.8.4:
   stage: build
   variables:
-    BONDY_IMAGE_VERSION: "0.9-SNAPSHOT"
+    BONDY_IMAGE_VERSION: "0.8"
     BONDY_TAG: "0.8.8.4"
   <<: *build
 
 0.8.8.4-slim:
   stage: build
   variables:
-    BONDY_IMAGE_VERSION: "0.9-SNAPSHOT"
+    BONDY_IMAGE_VERSION: "0.8"
     BONDY_TAG: "0.8.8.4"
     BONDY_IMAGE_VARIANT: "slim"
   <<: *build

@@ -16,7 +16,7 @@ RUN apt-get update && \
 
 # Download and install build deps and rebar
 RUN set -xe \
-    && curl -fSL -o rebar3 "https://s3.amazonaws.com/rebar3-nightly/rebar3" \
+    && curl -fSL -o rebar3 "https://github.com/erlang/rebar3/releases/download/3.15.1/rebar3" \
     && chmod +x ./rebar3 \
     && ./rebar3 local install \
     && rm ./rebar3
