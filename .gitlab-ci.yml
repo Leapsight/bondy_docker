@@ -40,14 +40,14 @@ stages:
 develop:
   stage: build
   variables:
-    BONDY_IMAGE_VERSION: "0.9-SNAPSHOT"
+    BONDY_IMAGE_VERSION: "1.0.0-beta"
     BONDY_TAG: "develop"
   <<: *build
 
 develop-slim:
   stage: build
   variables:
-    BONDY_IMAGE_VERSION: "0.9-SNAPSHOT"
+    BONDY_IMAGE_VERSION: "1.0.0-beta"
     BONDY_TAG: "develop"
     BONDY_IMAGE_VARIANT: "slim"
   <<: *build
