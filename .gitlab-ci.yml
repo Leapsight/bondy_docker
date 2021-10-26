@@ -296,48 +296,64 @@ master-slim:
 #     BONDY_IMAGE_VARIANT: "slim"
 #   <<: *build
 
-'1.0.0-beta.9':
-  stage: build
-  variables:
-    BONDY_IMAGE_VERSION: "0.9-SNAPSHOT"
-    BONDY_TAG: "1.0.0-beta.9"
-  <<: *build
+# '1.0.0-beta.9':
+#   stage: build
+#   variables:
+#     BONDY_IMAGE_VERSION: "0.9-SNAPSHOT"
+#     BONDY_TAG: "1.0.0-beta.9"
+#   <<: *build
 
-'1.0.0-beta.9-slim':
-  stage: build
-  variables:
-    BONDY_IMAGE_VERSION: "0.9-SNAPSHOT"
-    BONDY_TAG: "1.0.0-beta.9"
-    BONDY_IMAGE_VARIANT: "slim"
-  <<: *build
+# '1.0.0-beta.9-slim':
+#   stage: build
+#   variables:
+#     BONDY_IMAGE_VERSION: "0.9-SNAPSHOT"
+#     BONDY_TAG: "1.0.0-beta.9"
+#     BONDY_IMAGE_VARIANT: "slim"
+#   <<: *build
 
-'1.0.0-beta.10':
+# '1.0.0-beta.10':
+#   stage: build
+#   variables:
+#     BONDY_IMAGE_VERSION: "1.0.0-beta"
+#     BONDY_TAG: "1.0.0-beta.10"
+#   <<: *build
+
+# '1.0.0-beta.10-slim':
+#   stage: build
+#   variables:
+#     BONDY_IMAGE_VERSION: "1.0.0-beta"
+#     BONDY_TAG: "1.0.0-beta.10"
+#     BONDY_IMAGE_VARIANT: "slim"
+#   <<: *build
+
+
+# '1.0.0-beta.11':
+#   stage: build
+#   variables:
+#     BONDY_IMAGE_VERSION: "1.0.0-beta"
+#     BONDY_TAG: "1.0.0-beta.11"
+#   <<: *build
+
+# '1.0.0-beta.11-slim':
+#   stage: build
+#   variables:
+#     BONDY_IMAGE_VERSION: "1.0.0-beta"
+#     BONDY_TAG: "1.0.0-beta.11"
+#     BONDY_IMAGE_VARIANT: "slim"
+#   <<: *build
+
+
+'1.0.0-beta.12':
   stage: build
   variables:
     BONDY_IMAGE_VERSION: "1.0.0-beta"
-    BONDY_TAG: "1.0.0-beta.10"
+    BONDY_TAG: "1.0.0-beta.12"
   <<: *build
 
-'1.0.0-beta.10-slim':
+'1.0.0-beta.12-slim':
   stage: build
   variables:
     BONDY_IMAGE_VERSION: "1.0.0-beta"
-    BONDY_TAG: "1.0.0-beta.10"
-    BONDY_IMAGE_VARIANT: "slim"
-  <<: *build
-
-
-'1.0.0-beta.11':
-  stage: build
-  variables:
-    BONDY_IMAGE_VERSION: "1.0.0-beta"
-    BONDY_TAG: "1.0.0-beta.11"
-  <<: *build
-
-'1.0.0-beta.11-slim':
-  stage: build
-  variables:
-    BONDY_IMAGE_VERSION: "1.0.0-beta"
-    BONDY_TAG: "1.0.0-beta.11"
+    BONDY_TAG: "1.0.0-beta.12"
     BONDY_IMAGE_VARIANT: "slim"
   <<: *build
