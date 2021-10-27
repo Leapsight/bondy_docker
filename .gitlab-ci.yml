@@ -343,17 +343,32 @@ master-slim:
 #   <<: *build
 
 
-'1.0.0-beta.12':
+# '1.0.0-beta.12':
+#   stage: build
+#   variables:
+#     BONDY_IMAGE_VERSION: "1.0.0-beta"
+#     BONDY_TAG: "1.0.0-beta.12"
+#   <<: *build
+
+# '1.0.0-beta.12-slim':
+#   stage: build
+#   variables:
+#     BONDY_IMAGE_VERSION: "1.0.0-beta"
+#     BONDY_TAG: "1.0.0-beta.12"
+#     BONDY_IMAGE_VARIANT: "slim"
+#   <<: *build
+
+'1.0.0-beta.13':
   stage: build
   variables:
     BONDY_IMAGE_VERSION: "1.0.0-beta"
-    BONDY_TAG: "1.0.0-beta.12"
+    BONDY_TAG: "1.0.0-beta.13"
   <<: *build
 
-'1.0.0-beta.12-slim':
+'1.0.0-beta.13-slim':
   stage: build
   variables:
     BONDY_IMAGE_VERSION: "1.0.0-beta"
-    BONDY_TAG: "1.0.0-beta.12"
+    BONDY_TAG: "1.0.0-beta.13"
     BONDY_IMAGE_VARIANT: "slim"
   <<: *build
