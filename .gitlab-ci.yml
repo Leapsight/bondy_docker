@@ -417,3 +417,11 @@ master-slim:
     BONDY_TAG: "1.0.0-beta.16"
     BONDY_IMAGE_VARIANT: "slim"
   <<: *build
+
+
+'customer-temp-requirements-1.0.0-beta':
+  stage: build
+  variables:
+    BONDY_IMAGE_VERSION: "1.0.0-beta"
+    BONDY_TAG: "customer-temp-requirements-1.0.0-beta"
+  <<: *build
