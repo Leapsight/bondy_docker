@@ -33,7 +33,7 @@ RUN rebar3 as prod release
 # Build stage 1
 # ===========================================================================
 
-FROM debian:buster
+FROM debian:bullseye
 
 ENV BONDY_HOME="/bondy"
 ENV RELEASE_DIR="/bondy-build/bondy/_build/prod/rel/bondy"

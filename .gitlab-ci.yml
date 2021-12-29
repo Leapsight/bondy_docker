@@ -26,7 +26,7 @@ stages:
     - cp start.sh tmp/start.sh
   script:
     # - docker buildx build --platform linux/amd64,linux/arm/v7,linux/arm64/v8
-    - docker buildx build --platform linux/arm64/v8 --build-arg BONDY_TAG=${BONDY_TAG} --pull -t "$image" tmp
+    - docker buildx build --platform linux/amd64 --build-arg BONDY_TAG=${BONDY_TAG} --pull -t "$image" tmp
     - docker push "$image"
 
   only:
@@ -66,14 +66,14 @@ develop-slim:
 master:
   stage: build
   variables:
-    BONDY_IMAGE_VERSION: "0.8"
+    BONDY_IMAGE_VERSION: "1.0.0-beta"
     BONDY_TAG: "master"
   <<: *build
 
 master-slim:
   stage: build
   variables:
-    BONDY_IMAGE_VERSION: "0.8"
+    BONDY_IMAGE_VERSION: "1.0.0-beta"
     BONDY_TAG: "master"
     BONDY_IMAGE_VARIANT: "slim"
   <<: *build
@@ -422,20 +422,21 @@ master-slim:
 #   <<: *build
 
 
-'1.0.0-beta.16m':
+'1.0.0-beta.17':
   stage: build
   variables:
     BONDY_IMAGE_VERSION: "1.0.0-beta"
-    BONDY_TAG: "1.0.0-beta.16"
+    BONDY_TAG: "1.0.0-beta.17"
   <<: *build
 
-'1.0.0-beta.16m-slim':
+'1.0.0-beta.17-slim':
   stage: build
   variables:
     BONDY_IMAGE_VERSION: "1.0.0-beta"
-    BONDY_TAG: "1.0.0-beta.16"
+    BONDY_TAG: "1.0.0-beta.17"
     BONDY_IMAGE_VARIANT: "slim"
   <<: *build
+
 
 
 # 'customer-temp-requirements-1.0.0-beta':
