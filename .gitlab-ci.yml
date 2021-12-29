@@ -24,7 +24,8 @@ stages:
     - cp "${BONDY_IMAGE_VERSION}/${VARIANT:-.}/Dockerfile" tmp/Dockerfile
     - cp start.sh tmp/start.sh
   script:
-    - docker buildx build --platform linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8 --build-arg BONDY_TAG=${BONDY_TAG} --pull -t "$image" tmp - docker push "$image"
+    - docker buildx build --platform linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8 --build-arg BONDY_TAG=${BONDY_TAG} --pull -t "$image" tmp
+    - docker push "$image"
 
   only:
     - master
