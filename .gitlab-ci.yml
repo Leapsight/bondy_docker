@@ -10,6 +10,7 @@ stages:
   before_script:
     - export DOCKER_BUILDKIT=1
     - docker buildx create --use
+    - docker buildx version
     - echo "CI_JOB_NAME = $CI_JOB_NAME"
     - BONDY_TAG="${BONDY_TAG:-BONDY_IMAGE_VERSION}"
     # Login to the Gitlab repo
