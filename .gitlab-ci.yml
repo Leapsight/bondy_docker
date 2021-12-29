@@ -21,10 +21,10 @@ stages:
     - cp "${BONDY_IMAGE_VERSION}/${VARIANT:-.}/Dockerfile" tmp/Dockerfile
     - cp start.sh tmp/start.sh
   script:
-    # Build using $VARIANT/Dockerfile orelse ./Dockerfile
-    # - docker build --pull -t "$image" "${VARIANT:-.}"
-    - docker build --build-arg BONDY_TAG=${BONDY_TAG} --pull -t "$image" tmp
-    - docker push "$image"
+    - docker-buildx create --use
+    - docker-buildx build
+      --platform linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8
+      --build-arg BONDY_TAG=${BONDY_TAG} --pull -t "$image" tmp - docker push "$image"
 
   only:
     - master
@@ -403,14 +403,30 @@ master-slim:
 #     BONDY_IMAGE_VARIANT: "slim"
 #   <<: *build
 
-'1.0.0-beta.16':
+# '1.0.0-beta.16':
+#   stage: build
+#   variables:
+#     BONDY_IMAGE_VERSION: "1.0.0-beta"
+#     BONDY_TAG: "1.0.0-beta.16"
+#   <<: *build
+
+# '1.0.0-beta.16-slim':
+#   stage: build
+#   variables:
+#     BONDY_IMAGE_VERSION: "1.0.0-beta"
+#     BONDY_TAG: "1.0.0-beta.16"
+#     BONDY_IMAGE_VARIANT: "slim"
+#   <<: *build
+
+
+'1.0.0-beta.16m':
   stage: build
   variables:
     BONDY_IMAGE_VERSION: "1.0.0-beta"
     BONDY_TAG: "1.0.0-beta.16"
   <<: *build
 
-'1.0.0-beta.16-slim':
+'1.0.0-beta.16m-slim':
   stage: build
   variables:
     BONDY_IMAGE_VERSION: "1.0.0-beta"
