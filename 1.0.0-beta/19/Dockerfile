@@ -4,7 +4,7 @@
 
 FROM erlang:24 AS builder
 
-ARG BONDY_TAG=1.0.0-beta.18
+ARG BONDY_TAG=1.0.0-beta.19
 
 ENV BONDY_REPO=https://gitlab.com/leapsight/bondy.git
 
@@ -20,12 +20,14 @@ RUN set -xe \
     && chmod +x ./rebar3 \
     && ./rebar3 local install \
     && rm ./rebar3
+
 ENV PATH "$PATH:/root/.cache/rebar3/bin"
 
 # Download Bondy source and build release
 RUN mkdir -p /bondy-build/bondy && \
     git clone --depth 1 --single-branch --branch $BONDY_TAG $BONDY_REPO
 WORKDIR /bondy-build/bondy
+
 # This builds the release in /bondy-build/bondy/_build/prod/rel/bondy
 RUN rebar3 as prod release
 
